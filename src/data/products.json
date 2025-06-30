@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "title": "Premium Wireless Headphones",
+    "price": 16999,
+    "image": "https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=500",
+    "category": "Electronics",
+    "description": "High-quality wireless headphones with noise cancellation"
+  },
+  {
+    "id": 2,
+    "title": "Smart Fitness Watch",
+    "price": 24999,
+    "image": "https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=500",
+    "category": "Electronics",
+    "description": "Advanced fitness tracking with heart rate monitor"
+  },
+  {
+    "id": 3,
+    "title": "Leather Messenger Bag",
+    "price": 7499,
+    "image": "https://images.pexels.com/photos/2905238/pexels-photo-2905238.jpeg?auto=compress&cs=tinysrgb&w=500",
+    "category": "Fashion",
+    "description": "Handcrafted genuine leather messenger bag"
+  },
+  {
+    "id": 4,
+    "title": "Minimalist Desk Lamp",
+    "price": 6699,
+    "image": "https://images.pexels.com/photos/1112598/pexels-photo-1112598.jpeg?auto=compress&cs=tinysrgb&w=500",
+    "category": "Home",
+    "description": "Modern LED desk lamp with adjustable brightness"
+  },
+  {
+    "id": 5,
+    "title": "Wireless Bluetooth Speaker",
+    "price": 12499,
+    "image": "https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?auto=compress&cs=tinysrgb&w=500",
+    "category": "Electronics",
+    "description": "Portable speaker with exceptional sound quality"
+  },
+  {
+    "id": 6,
+    "title": "Classic Sunglasses",
+    "price": 10799,
+    "image": "https://images.pexels.com/photos/46710/pexels-photo-46710.jpeg?auto=compress&cs=tinysrgb&w=500",
+    "category": "Fashion",
+    "description": "UV protection with timeless design"
+  },
+  {
+    "id": 7,
+    "title": "Ergonomic Office Chair",
+    "price": 33299,
+    "image": "https://images.pexels.com/photos/586344/pexels-photo-586344.jpeg?auto=compress&cs=tinysrgb&w=500",
+    "category": "Home",
+    "description": "Comfortable office chair with lumbar support"
+  },
+  {
+    "id": 8,
+    "title": "Stainless Steel Water Bottle",
+    "price": 2899,
+    "image": "https://images.pexels.com/photos/3671148/pexels-photo-3671148.jpeg?auto=compress&cs=tinysrgb&w=500",
+    "category": "Lifestyle",
+    "description": "Insulated water bottle keeps drinks cold for 24 hours"
+  },
+  {
+    "id": 9,
+    "title": "Wireless Phone Charger",
+    "price": 4199,
+    "image": "https://images.pexels.com/photos/4052198/pexels-photo-4052198.jpeg?auto=compress&cs=tinysrgb&w=500",
+    "category": "Electronics",
+    "description": "Fast wireless charging pad for all compatible devices"
+  },
+  {
+    "id": 10,
+    "title": "Ceramic Coffee Mug Set",
+    "price": 3299,
+    "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=500",
+    "category": "Home",
+    "description": "Set of 4 handcrafted ceramic mugs"
+  },
+  {
+    "id": 11,
+    "title": "Portable Phone Stand",
+    "price": 2099,
+    "image": "https://images.pexels.com/photos/887751/pexels-photo-887751.jpeg?auto=compress&cs=tinysrgb&w=500",
+    "category": "Electronics",
+    "description": "Adjustable stand for phones and tablets"
+  },
+  {
+    "id": 12,
+    "title": "Premium Canvas Backpack",
+    "price": 9999,
+    "image": "https://images.pexels.com/photos/2905238/pexels-photo-2905238.jpeg?auto=compress&cs=tinysrgb&w=500",
+    "category": "Fashion",
+    "description": "Durable canvas backpack with laptop compartment"
+  }
+]
