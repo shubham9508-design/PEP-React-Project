@@ -5,15 +5,19 @@ import { Product } from '../context/CartContext';
 interface ProductCardProps {
   product: Product;
   onAddToCart: (product: Product) => void;
+  onClick?: () => void; // optional callback for viewing details
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, onClick }) => {
   const handleAddToCart = () => {
     onAddToCart(product);
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    <div
+      onClick={onClick}
+      className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+    >
       {/* Product Image */}
       <div className="relative overflow-hidden">
         <img
@@ -32,31 +36,31 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
         </div>
 
         {/* Heart Icon */}
-        <button className="absolute top-3 right-3 p-2 bg-white/90 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white">
+        <button className="absolute top-3 right-3 p-2 bg-white/90 dark:bg-gray-700/90 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white dark:hover:bg-gray-700">
           <Heart className="w-4 h-4 text-gray-600 hover:text-red-500 transition-colors" />
         </button>
       </div>
 
       {/* Product Info */}
       <div className="p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
           {product.title}
         </h3>
         
-        <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-2">
           {product.description}
         </p>
 
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
-            <span className="text-2xl font-bold text-gray-900">
+            <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">
               ₹{product.price.toLocaleString('en-IN')}
             </span>
             <span className="text-sm text-gray-500">Free shipping</span>
           </div>
 
           <button
-            onClick={handleAddToCart}
+            onClick={(e) => { e.stopPropagation(); handleAddToCart(); }}
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 hover:shadow-md active:scale-95"
           >
             <ShoppingCart className="w-4 h-4" />

@@ -21,6 +21,18 @@
     <meta name="twitter:description" content="Discover amazing products at PkShop. Shop electronics, fashion, and more with fast delivery and great prices." />
   </head>
   <body>
+    <!-- restore theme before React mounts to prevent flash -->
+    <script>
+      (function() {
+        try {
+          const saved = localStorage.getItem('pkshop-dark-mode');
+          const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'true' || (saved === null && prefers)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

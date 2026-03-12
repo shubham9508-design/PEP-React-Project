@@ -11,9 +11,9 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Store className="w-8 h-8 text-blue-400" />
-              <span className="text-2xl font-bold">PkShop</span>
+              <span className="text-2xl font-bold text-white">PkShop</span>
             </div>
-            <p className="text-gray-300 text-sm leading-relaxed">
+            <p className="text-gray-300 dark:text-gray-400 text-sm leading-relaxed">
               Your premium online shopping destination. Discover amazing products at unbeatable prices with fast delivery and exceptional customer service.
             </p>
             <div className="flex space-x-4">
@@ -31,9 +31,9 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-white">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white dark:text-gray-400 dark:hover:text-white transition-colors">About Us</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Contact</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors">FAQ</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Shipping Info</a></li>
@@ -43,9 +43,9 @@ const Footer: React.FC = () => {
 
           {/* Categories */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Categories</h3>
+            <h3 className="text-lg font-semibold text-white">Categories</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Electronics</a></li>
+              <li><a href="#" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-white transition-colors">Electronics</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Fashion</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Home & Garden</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Lifestyle</a></li>
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Contact Us</h3>
+            <h3 className="text-lg font-semibold text-white">Contact Us</h3>
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-blue-400 flex-shrink-0" />

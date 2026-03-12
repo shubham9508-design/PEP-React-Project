@@ -2,6 +2,7 @@ import React from 'react';
 import CartItem from '../components/CartItem';
 import { useCart } from '../context/CartContext';
 import { ShoppingBag, ArrowLeft, CreditCard } from 'lucide-react';
+import { useToast } from '../context/ToastContext';
 
 interface CartProps {
   onNavigate: (page: 'home' | 'cart') => void;
@@ -9,15 +10,16 @@ interface CartProps {
 
 const Cart: React.FC<CartProps> = ({ onNavigate }) => {
   const { state, updateQuantity, removeFromCart, clearCart } = useCart();
+  const { addToast } = useToast();
 
   if (state.items.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900">
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-2xl mx-auto text-center">
-            <div className="bg-white rounded-2xl shadow-lg p-12">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-12">
               <ShoppingBag className="w-24 h-24 text-gray-300 mx-auto mb-6" />
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Your cart is empty</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Your cart is empty</h2>
               <p className="text-gray-600 mb-8">
                 Looks like you haven't added any items to your cart yet. Start shopping to fill it up!
               </p>
@@ -36,7 +38,7 @@ const Cart: React.FC<CartProps> = ({ onNavigate }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
@@ -50,7 +52,7 @@ const Cart: React.FC<CartProps> = ({ onNavigate }) => {
           
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Shopping Cart</h1>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Shopping Cart</h1>
               <p className="text-gray-600 mt-1">
                 {state.itemCount} {state.itemCount === 1 ? 'item' : 'items'} in your cart
               </p>
@@ -58,7 +60,10 @@ const Cart: React.FC<CartProps> = ({ onNavigate }) => {
             
             {state.items.length > 0 && (
               <button
-                onClick={clearCart}
+                onClick={() => {
+                  clearCart();
+                  addToast('Cart cleared.', 'info');
+                }}
                 className="text-red-600 hover:text-red-700 font-medium transition-colors"
               >
                 Clear Cart
@@ -74,36 +79,42 @@ const Cart: React.FC<CartProps> = ({ onNavigate }) => {
               <CartItem
                 key={item.id}
                 item={item}
-                onUpdateQuantity={updateQuantity}
-                onRemove={removeFromCart}
+                onUpdateQuantity={(id, qty) => {
+                  updateQuantity(id, qty);
+                  addToast('Quantity updated.', 'info');
+                }}
+                onRemove={(id) => {
+                  removeFromCart(id);
+                  addToast('Item removed from cart.', 'error');
+                }}
               />
             ))}
           </div>
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
-              <h2 className="text-xl font-bold text-gray-900 mb-6">Order Summary</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 sticky top-24">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">Order Summary</h2>
               
               <div className="space-y-4 mb-6">
                 <div className="flex justify-between text-gray-600">
-                  <span>Subtotal ({state.itemCount} items)</span>
+                  <span className="dark:text-gray-300">Subtotal ({state.itemCount} items)</span>
                   <span>₹{state.total.toLocaleString('en-IN')}</span>
                 </div>
                 
                 <div className="flex justify-between text-gray-600">
-                  <span>Shipping</span>
-                  <span className="text-green-600 font-medium">Free</span>
+                  <span className="dark:text-gray-300">Shipping</span>
+                  <span className="text-green-600 dark:text-green-400 font-medium">Free</span>
                 </div>
                 
                 <div className="flex justify-between text-gray-600">
-                  <span>Tax (GST 18%)</span>
+                  <span className="dark:text-gray-300">Tax (GST 18%)</span>
                   <span>₹{Math.round(state.total * 0.18).toLocaleString('en-IN')}</span>
                 </div>
                 
                 <hr className="border-gray-200" />
                 
-                <div className="flex justify-between text-lg font-bold text-gray-900">
+                <div className="flex justify-between text-lg font-bold text-gray-900 dark:text-gray-100">
                   <span>Total</span>
                   <span>₹{Math.round(state.total * 1.18).toLocaleString('en-IN')}</span>
                 </div>

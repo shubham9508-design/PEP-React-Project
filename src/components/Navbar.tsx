@@ -1,6 +1,7 @@
 import React from 'react';
-import { ShoppingCart, Store } from 'lucide-react';
+import { ShoppingCart, Store, Sun, Moon } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useTheme } from '../context/ThemeContext';
 
 interface NavbarProps {
   currentPage: 'home' | 'cart';
@@ -10,8 +11,10 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   const { state } = useCart();
 
+  const { darkMode, toggleDarkMode } = useTheme();
+
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
+    <nav className="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -20,19 +23,19 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             onClick={() => onNavigate('home')}
           >
             <Store className="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-colors" />
-            <span className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+            <span className="text-2xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 transition-colors">
               PkShop
             </span>
           </div>
 
           {/* Navigation Links */}
-          <div className="flex items-center space-x-8">
+          <div className="flex items-center space-x-6">
             <button
               onClick={() => onNavigate('home')}
               className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                 currentPage === 'home'
-                  ? 'text-blue-600 bg-blue-50'
-                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                  ? 'text-blue-600 bg-blue-50 dark:bg-gray-700 dark:text-blue-400'
+                  : 'text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700'
               }`}
             >
               Home
@@ -42,8 +45,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
               onClick={() => onNavigate('cart')}
               className={`relative px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                 currentPage === 'cart'
-                  ? 'text-blue-600 bg-blue-50'
-                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                  ? 'text-blue-600 bg-blue-50 dark:bg-gray-700 dark:text-blue-400'
+                  : 'text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700'
               }`}
             >
               <div className="flex items-center space-x-1">
@@ -55,6 +58,18 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                   </span>
                 )}
               </div>
+            </button>
+
+            {/* theme toggle */}
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            >
+              {darkMode ? (
+                <Sun className="w-5 h-5 text-yellow-500" />
+              ) : (
+                <Moon className="w-5 h-5 text-gray-600" />
+              )}
             </button>
           </div>
         </div>

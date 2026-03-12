@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { CartProvider } from './context/CartContext';
+import { ThemeProvider } from './context/ThemeContext';
+import { ToastProvider } from './context/ToastContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -13,19 +15,23 @@ function App() {
   };
 
   return (
-    <CartProvider>
-      <div className="min-h-screen bg-gray-50 flex flex-col">
-        <Navbar currentPage={currentPage} onNavigate={handleNavigate} />
-        <main className="flex-grow">
-          {currentPage === 'home' ? (
-            <Home />
-          ) : (
-            <Cart onNavigate={handleNavigate} />
-          )}
-        </main>
-        <Footer />
-      </div>
-    </CartProvider>
+    <ThemeProvider>
+      <CartProvider>
+        <ToastProvider>
+          <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
+            <Navbar currentPage={currentPage} onNavigate={handleNavigate} />
+            <main className="flex-grow">
+              {currentPage === 'home' ? (
+                <Home />
+              ) : (
+                <Cart onNavigate={handleNavigate} />
+              )}
+            </main>
+            <Footer />
+          </div>
+        </ToastProvider>
+      </CartProvider>
+    </ThemeProvider>
   );
 }
 
