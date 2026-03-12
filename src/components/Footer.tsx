@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
               <span>Created with</span>
               <Heart className="w-4 h-4 text-red-500 animate-pulse" />
               <span>by</span>
-              <span className="text-blue-400 font-semibold">Puneet Kathpalia</span>
+              <span className="text-blue-400 font-semibold">Shubham Bhardwaj</span>
             </div>
 
             <div className="flex space-x-6 text-sm">
